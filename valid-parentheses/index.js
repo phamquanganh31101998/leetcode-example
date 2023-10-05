@@ -5,22 +5,17 @@
 var isValid = function (s) {
   let result = false;
   const stack = [];
+  const keys = ['(', '[', '{']
+  const closeChar = {'(': ')', '[': ']', '{': '}'}
 
   for (let i = 0; i < s.length; i++) {
-    if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
+    if (keys.includes(s[i])) {
       stack.push(s[i]);
-      continue;
-    }
-
-    if (s[i] === ')' || s[i] === ']' || s[i] === '}') {
-      const lastCharInStack = stack.pop();
-
-      if (lastCharInStack === '(' && s[i] === ')') {
-        result = true;
-      } else if (lastCharInStack === '[' && s[i] === ']') {
-        result = true;
-      } else if (lastCharInStack === '{' && s[i] === '}') {
-        result = true;
+    } else {
+      const lastCharInStack = stack.pop()
+      const relatedCloseChar = closeChar[lastCharInStack]
+      if (relatedCloseChar === s[i]) {
+        result = true
       } else {
         result = false;
         break;
