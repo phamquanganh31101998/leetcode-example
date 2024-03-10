@@ -4,6 +4,8 @@
  * @param {string[]} strs
  * @return {string}
  */
+
+// Compare the first string with other strings
 var longestCommonPrefix = function(strs) {
   let result = ''
   for (let i = 0; i < strs[0]?.length; i++) {

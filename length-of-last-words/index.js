@@ -9,11 +9,13 @@ const lengthOfLastWord = function (s) {
   let i = s.length - 1;
 
   while (i >= 0) {
+    // encounter the space before the last word -> skip
     if (s[i] === ' ' && result === 0) {
       i--;
       continue;
     }
 
+    // encounter the space after the last word -> stop
     if (s[i] === ' ' && result > 0) {
       break
     }
